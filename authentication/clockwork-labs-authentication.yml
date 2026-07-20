@@ -1,0 +1,55 @@
+generated: '2026-07-18'
+method: searched
+source: https://spacetimedb.com/docs/core-concepts/authentication
+docs: https://spacetimedb.com/docs/core-concepts/authentication
+note: >-
+  SpacetimeDB has no OpenAPI to derive from; this profile is captured from the documented HTTP API
+  and authentication docs. Authentication is a Bearer JWT presented in the Authorization header.
+  Tokens are OpenID Connect (OIDC) ID tokens whose issuer is trusted by the module. SpacetimeDB
+  can also mint an anonymous identity+token pair (POST /v1/identity) for clients with no external
+  IdP. The public key used to verify tokens is exposed at GET /v1/identity/public-key and via the
+  OIDC discovery document (well-known/clockwork-labs-openid-configuration.json).
+summary:
+  types: [http, openIdConnect]
+  http_schemes: [bearer]
+  bearer_format: JWT
+  oidc_issuer: https://auth.spacetimedb.com
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: >-
+    Bearer JWT in the Authorization header. Accepted on write/privileged HTTP endpoints (publish,
+    delete, logs, names, reducer calls, SQL) and on the subscription WebSocket. When present, the
+    response echoes spacetime-identity and spacetime-identity-token headers.
+- name: spacetimeAuth
+  type: openIdConnect
+  openIdConnectUrl: https://spacetimedb.com/.well-known/openid-configuration
+  issuer: https://auth.spacetimedb.com
+  description: >-
+    SpacetimeAuth (beta) is the first-party OIDC identity provider. Third-party OIDC providers are
+    also supported and documented: Auth0, Clerk, and Steam Session Ticket authentication. Any OIDC
+    ID token whose issuer the module trusts can be used as the Bearer token.
+providers:
+- name: SpacetimeAuth
+  status: beta
+  docs: https://spacetimedb.com/docs/core-concepts/authentication/spacetimeauth/
+- name: Auth0
+  docs: https://spacetimedb.com/docs/core-concepts/authentication/Auth0
+- name: Clerk
+  docs: https://spacetimedb.com/docs/core-concepts/authentication/Clerk
+- name: Steam Session Ticket
+  docs: https://spacetimedb.com/docs/core-concepts/authentication/spacetimeauth/steam
+tokens:
+  anonymous_identity:
+    endpoint: POST /v1/identity
+    description: Generate a new anonymous identity and long-lived token.
+  websocket_token:
+    endpoint: POST /v1/identity/websocket-token
+    description: >-
+      Generate a short-lived access token (JWT) for use in untrusted contexts, e.g. embedded in a
+      subscription WebSocket URL.
+  verify:
+    endpoint: GET /v1/identity/:identity/verify
+    description: Verify an identity/token pair (204 valid-and-matches, 400 valid-but-mismatch, 401 invalid).

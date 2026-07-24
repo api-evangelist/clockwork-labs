@@ -1,0 +1,43 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: https://spacetimedb.com/docs/http/database/ + https://spacetimedb.com/docs/http/identity/
+note: >-
+  No first-party (Clockwork Labs) hosted or published MCP server was found as of this pass. Several
+  community MCP servers wrap SpacetimeDB (e.g. fractaloutlook/spacetimedb-mcp-server,
+  Fail2Fail-Studios/spacetimedb-mcp). The tool list below is a CANDIDATE derived from the documented
+  SpacetimeDB HTTP API operations, not an official manifest.
+server:
+  name: spacetimedb
+  transport: http
+  url: null
+community_servers:
+- name: fractaloutlook/spacetimedb-mcp-server
+  url: https://github.com/fractaloutlook/spacetimedb-mcp-server
+- name: Fail2Fail-Studios/spacetimedb-mcp
+  url: https://github.com/Fail2Fail-Studios/spacetimedb-mcp
+tools:
+- name: get_database
+  description: Get a database's identity, owner, host type, and replica count.
+  source_operation: GET /v1/database/:name_or_identity
+- name: get_schema
+  description: Get the schema for a database.
+  source_operation: GET /v1/database/:name_or_identity/schema
+- name: call_reducer
+  description: Invoke a reducer in a database.
+  source_operation: POST /v1/database/:name_or_identity/call/:reducer
+- name: run_sql
+  description: Run a SQL query against a database.
+  source_operation: POST /v1/database/:name_or_identity/sql
+- name: get_logs
+  description: Retrieve logs from a database.
+  source_operation: GET /v1/database/:name_or_identity/logs
+- name: list_databases
+  description: List all databases owned by an identity.
+  source_operation: GET /v1/identity/:identity/databases
+- name: create_identity
+  description: Generate a new identity and token.
+  source_operation: POST /v1/identity
+- name: verify_identity
+  description: Verify an identity/token pair.
+  source_operation: GET /v1/identity/:identity/verify

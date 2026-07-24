@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: generated
+source: >-
+  Grounded in the documented SpacetimeDB HTTP API (https://spacetimedb.com/docs/http/) +
+  conventions/clockwork-labs-conventions.yml + authentication/clockwork-labs-authentication.yml.
+  SpacetimeDB publishes no OpenAPI; steps reference the real documented HTTP paths, not invented ids.
+skills:
+- file: clockwork-labs-query-database.md
+  name: Query a SpacetimeDB database over HTTP
+  api: SpacetimeDB HTTP API
+  operations:
+  - GET /v1/database/:name_or_identity/schema
+  - POST /v1/database/:name_or_identity/sql
+  - GET /v1/database/:name_or_identity
+- file: clockwork-labs-call-reducer.md
+  name: Authenticate and invoke a reducer
+  api: SpacetimeDB HTTP API
+  operations:
+  - POST /v1/identity
+  - POST /v1/database/:name_or_identity/call/:reducer
+  - GET /v1/database/:name_or_identity/logs

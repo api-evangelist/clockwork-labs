@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://spacetimedb.com/docs/http/database/ + https://spacetimedb.com/docs/http/identity/
+format: http-status
+note: >-
+  SpacetimeDB signals errors with HTTP status codes rather than an RFC 9457 problem+json envelope,
+  and publishes no OpenAPI. These are the response statuses documented on the HTTP API reference
+  pages; no structured problem-type registry is published.
+problems:
+- status: 400
+  title: Bad Request
+  detail: >-
+    Malformed request, or a valid token that does not match the supplied identity on
+    GET /v1/identity/:identity/verify.
+  source_operation: GET /v1/identity/:identity/verify
+- status: 401
+  title: Unauthorized
+  detail: >-
+    Missing or invalid Bearer token on a privileged operation (publish/put to an owned database,
+    setting names, delete, logs).
+  source_operation: PUT /v1/database/:name_or_identity
+- status: 204
+  title: No Content
+  detail: Returned by GET /v1/identity/:identity/verify when the token is valid and matches the identity.
+  source_operation: GET /v1/identity/:identity/verify
+- status: 101
+  title: Switching Protocols
+  detail: Returned when GET /v1/database/:name_or_identity/subscribe upgrades to a WebSocket.
+  source_operation: GET /v1/database/:name_or_identity/subscribe

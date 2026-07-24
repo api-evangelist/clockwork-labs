@@ -1,0 +1,52 @@
+generated: '2026-07-18'
+method: searched
+source: https://spacetimedb.com/docs/cli-reference + https://spacetimedb.com/install
+name: spacetime
+description: >-
+  The SpacetimeDB command-line tool for creating, publishing, and managing database modules and
+  local/remote SpacetimeDB instances, and for generating type-safe client bindings.
+docs: https://spacetimedb.com/docs/cli-reference
+install:
+- method: script
+  command: curl -sSf https://spacetimedb.com/install | sh
+  url: https://spacetimedb.com/install
+- method: homebrew
+  command: brew install clockworklabs/tap/spacetime
+  url: https://github.com/clockworklabs/homebrew-tap
+commands:
+- name: init
+  description: Initialize a new spacetime project.
+- name: build
+  description: Build a spacetime module.
+- name: publish
+  description: Create and update a SpacetimeDB database (publish a module).
+- name: delete
+  description: Delete a SpacetimeDB database.
+- name: dev
+  description: Development mode with auto-regeneration, auto-rebuild, and auto-publish.
+- name: generate
+  description: Generate type-safe client files/bindings for a module.
+- name: call
+  description: Invoke functions (reducers or procedures) in a database.
+- name: sql
+  description: Run a SQL query against the database.
+- name: subscribe
+  description: Monitor SQL queries on the database with real-time updates.
+- name: describe
+  description: Describe the structure of a database or entities within it.
+- name: logs
+  description: Print logs from a SpacetimeDB database.
+- name: list
+  description: List the databases attached to an identity.
+- name: rename
+  description: Rename a database.
+- name: login
+  description: Manage login to the SpacetimeDB CLI.
+- name: logout
+  description: Remove stored login credentials.
+- name: server
+  description: Manage server connections and configurations.
+- name: start
+  description: Start a local SpacetimeDB instance.
+- name: version
+  description: Manage installed spacetime versions.

@@ -1,7 +1,29 @@
 aid: clockwork-labs
 name: Clockwork Labs
-description: Clockwork Labs is a company surfaced as a portfolio company of a16z and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Clockwork Labs is a San Francisco software company (founded 2019) that builds SpacetimeDB, a
+  relational database that is also an application server: developers upload their schema and
+  server-side business logic as a WebAssembly "module" (written in Rust, C#, TypeScript, or C++)
+  directly into the database, and clients connect over WebSocket to invoke reducers and subscribe
+  to real-time state updates with no separate application server in between. SpacetimeDB exposes a
+  versioned HTTP API (/v1/database and /v1/identity) for publishing modules, invoking reducers,
+  running SQL, streaming subscriptions, and managing identities and JWT tokens, plus a first-party
+  `spacetime` CLI and client SDKs for TypeScript, C#/Unity, Rust, Python, and C++. It is the
+  production backend of BitCraft, the company's MMO. Clockwork Labs is backed by a16z, Supercell,
+  Firstminute Capital, Skycatcher, 1Up Ventures, and Supernode.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://spacetimedb.com/og-home.png
 url: https://raw.githubusercontent.com/api-evangelist/clockwork-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +33,113 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Database
+- Real-Time
+- WebSocket
+- Game Backend
+- Multiplayer
+- Serverless
+- WebAssembly
+- Developer Tools
+- Infrastructure
+apis:
+- name: SpacetimeDB HTTP API
+  description: >-
+    The SpacetimeDB HTTP API lets clients and tools interact with SpacetimeDB databases: publish
+    and delete database modules, manage database names, retrieve schema and logs, invoke reducers,
+    run SQL queries, open real-time subscription WebSockets, and create/verify Spacetime identities
+    and JWT tokens. Authentication is a Bearer JWT (SpacetimeAuth/OIDC, or an anonymously generated
+    identity token). Base host is the hosted SpacetimeDB Cloud (Maincloud); the same API is served
+    by any self-hosted `spacetime start` instance.
+  humanURL: https://spacetimedb.com/docs/http/database/
+  baseURL: https://maincloud.spacetimedb.com
+  tags:
+  - Database
+  - Real-Time
+  - WebSocket
+  - Identity
+  properties:
+  - type: Documentation
+    url: https://spacetimedb.com/docs/http/database/
+  - type: APIReference
+    url: https://spacetimedb.com/docs/http/database/
+  - type: Authentication
+    url: authentication/clockwork-labs-authentication.yml
+  - type: ErrorCatalog
+    url: errors/clockwork-labs-problem-types.yml
+  - type: Conventions
+    url: conventions/clockwork-labs-conventions.yml
+  - type: Conformance
+    url: conformance/clockwork-labs-conformance.yml
+  - type: MCPServer
+    url: mcp/clockwork-labs-mcp.yml
+common:
+- type: DeveloperPortal
+  url: https://spacetimedb.com/docs
+- type: Documentation
+  url: https://spacetimedb.com/docs
+- type: APIReference
+  url: https://spacetimedb.com/docs/http/database/
+- type: GettingStarted
+  url: https://spacetimedb.com/docs/
+- type: GitHubOrganization
+  url: https://github.com/clockworklabs
+- type: Blog
+  url: https://spacetimedb.com/blog
+- type: Support
+  url: https://discord.gg/spacetimedb
+- type: StatusPage
+  url: https://status.spacetimedb.com
+- type: Pricing
+  url: https://spacetimedb.com/pricing
+- type: SignUp
+  url: https://spacetimedb.com/login
+- type: Login
+  url: https://spacetimedb.com/login
+- type: TermsOfService
+  url: https://spacetimedb.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://spacetimedb.com/privacy
+- type: LLMsTxt
+  url: llms/clockwork-labs-llms.txt
+- type: Packages
+  url: packages/clockwork-labs-packages.yml
+- type: SDKs
+  url: packages/clockwork-labs-packages.yml
+- type: CLI
+  url: cli/clockwork-labs-cli.yml
+- type: WellKnown
+  url: well-known/clockwork-labs-well-known.yml
+- type: Authentication
+  url: authentication/clockwork-labs-authentication.yml
+- type: OpenIDConnect
+  url: well-known/clockwork-labs-openid-configuration.json
+- type: ErrorCatalog
+  url: errors/clockwork-labs-problem-types.yml
+- type: Conventions
+  url: conventions/clockwork-labs-conventions.yml
+- type: Conformance
+  url: conformance/clockwork-labs-conformance.yml
+- type: Lifecycle
+  url: lifecycle/clockwork-labs-lifecycle.yml
+- type: ChangeLog
+  url: changelog/clockwork-labs-changelog.yml
+- type: MCPServer
+  url: mcp/clockwork-labs-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/clockwork-labs-domain-security.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

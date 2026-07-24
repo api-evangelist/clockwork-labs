@@ -1,0 +1,76 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  npm, PyPI, crates.io, NuGet registries + github.com/clockworklabs SDK repos
+notes: >-
+  All packages are first-party, published from the clockworklabs GitHub org. The npm package
+  @clockworklabs/spacetimedb-sdk is deprecated in favor of `spacetimedb`. The `spacetime` CLI is
+  distributed via an install script and a Homebrew tap (see cli/clockwork-labs-cli.yml).
+packages:
+- language: typescript
+  registry: npm
+  name: spacetimedb
+  url: https://www.npmjs.com/package/spacetimedb
+  install: npm install spacetimedb
+  version: 2.6.1
+  repo: https://github.com/clockworklabs/spacetimedb-typescript-sdk
+  official: true
+  description: SpacetimeDB TypeScript/JavaScript client SDK (browser and Node.js).
+- language: typescript
+  registry: npm
+  name: "@clockworklabs/spacetimedb-sdk"
+  url: https://www.npmjs.com/package/@clockworklabs/spacetimedb-sdk
+  install: npm install @clockworklabs/spacetimedb-sdk
+  version: 2.0.0
+  official: true
+  deprecated: true
+  description: "Deprecated: use the `spacetimedb` package instead."
+- language: csharp
+  registry: nuget
+  name: SpacetimeDB.ClientSDK
+  url: https://www.nuget.org/packages/SpacetimeDB.ClientSDK
+  install: dotnet add package SpacetimeDB.ClientSDK
+  version: 2.6.1
+  repo: https://github.com/clockworklabs/com.clockworklabs.spacetimedbsdk
+  official: true
+  description: SpacetimeDB C# client SDK (also the Unity/Godot client SDK).
+- language: rust
+  registry: crates
+  name: spacetimedb-sdk
+  url: https://crates.io/crates/spacetimedb-sdk
+  install: cargo add spacetimedb-sdk
+  version: 2.6.1
+  official: true
+  description: Rust client SDK for connecting to SpacetimeDB databases.
+- language: rust
+  registry: crates
+  name: spacetimedb
+  url: https://crates.io/crates/spacetimedb
+  install: cargo add spacetimedb
+  version: 2.6.1
+  official: true
+  description: Rust server-module library / bindings for authoring SpacetimeDB modules.
+- language: rust
+  registry: crates
+  name: spacetimedb-bindings-macro
+  url: https://crates.io/crates/spacetimedb-bindings-macro
+  install: cargo add spacetimedb-bindings-macro
+  version: 2.6.1
+  official: true
+  description: Procedural macros supporting SpacetimeDB's Rust module bindings.
+- language: python
+  registry: pypi
+  name: spacetimedb
+  url: https://pypi.org/project/spacetimedb/
+  install: pip install spacetimedb
+  repo: https://github.com/clockworklabs/spacetimedb-python-sdk
+  official: true
+  maintained: false
+  description: Python client SDK (asyncio-based). Not actively maintained at this time.
+- language: cpp
+  registry: github
+  name: spacetimedb-bindings-cpp
+  url: https://github.com/clockworklabs/spacetimedb-bindings-cpp
+  install: git submodule / CMake (no central registry)
+  official: true
+  description: C++ module bindings for authoring SpacetimeDB modules.

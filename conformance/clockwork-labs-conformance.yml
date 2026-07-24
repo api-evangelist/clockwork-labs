@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://spacetimedb.com/docs/core-concepts/authentication +
+  https://spacetimedb.com/.well-known/openid-configuration +
+  https://spacetimedb.com/docs/clients/subscriptions/semantics
+note: >-
+  Standards asserted from documented behavior. SpacetimeDB publishes no OpenAPI; assertions are
+  derived from the docs and the live OIDC discovery document. No published third-party security
+  compliance program (SOC 2 / ISO 27001 / PCI / HIPAA) was found, so no Compliance pointer is emitted.
+standards:
+- id: openid-connect
+  conforms: true
+  evidence: >-
+    OIDC discovery document served at /.well-known/openid-configuration (issuer
+    https://auth.spacetimedb.com, jwks_uri published); SpacetimeAuth + Auth0 + Clerk documented.
+- id: jwt-rfc7519
+  conforms: true
+  evidence: Auth tokens are JWTs; public key/JWKS exposed for verification (GET /v1/identity/public-key).
+- id: jwks-rfc7517
+  conforms: true
+  evidence: jwks_uri published in OIDC discovery document.
+- id: oauth2-rfc6749
+  conforms: partial
+  evidence: OIDC is layered on OAuth2, but no /.well-known/oauth-authorization-server (404) and no scope model.
+- id: websocket-rfc6455
+  conforms: true
+  evidence: >-
+    GET /v1/database/:name/subscribe upgrades to a WebSocket (101 Switching Protocols) with a
+    documented subscription-semantics protocol.
+- id: rest
+  conforms: partial
+  evidence: Resource-oriented /v1/database and /v1/identity HTTP endpoints with standard methods.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use HTTP status codes with plain bodies, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404.

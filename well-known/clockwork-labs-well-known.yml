@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/* on spacetimedb.com
+host: https://spacetimedb.com
+documents:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: clockwork-labs-openid-configuration.json
+  note: >-
+    OIDC discovery document. issuer=https://auth.spacetimedb.com,
+    jwks_uri=https://auth.spacetimedb.com/.well-known/openid-configuration/certs (SpacetimeAuth).
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404

@@ -1,0 +1,68 @@
+generated: '2026-07-18'
+method: searched
+source: https://spacetimedb.com/docs/http/database/
+docs: https://spacetimedb.com/docs/http/
+note: >-
+  Cross-cutting semantics of the SpacetimeDB HTTP API, captured from the docs (no OpenAPI is
+  published). See authentication/, errors/, and lifecycle/ for the auth, error, and versioning
+  detail.
+authentication:
+  style: bearer-jwt
+  header: Authorization
+  detail: >-
+    Bearer JWT (OIDC ID token or SpacetimeDB-minted identity token). Many read endpoints are
+    public/anonymous; writes and privileged reads require a token. See
+    authentication/clockwork-labs-authentication.yml.
+  identity_echo:
+    headers: [spacetime-identity, spacetime-identity-token]
+    detail: When an Authorization header is provided, the response echoes the caller identity/token.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: HTTP API is versioned in the path (/v1/...). Product/engine version is tracked separately (v2.6.x).
+idempotency:
+  supported: false
+  detail: >-
+    No HTTP idempotency-key contract is documented. Reducers execute inside a single database
+    transaction with full atomicity guarantees (all-or-nothing), but that is transactional
+    atomicity, not a client-supplied idempotency key. No Idempotency-Key header.
+pagination:
+  style: query-driven
+  detail: >-
+    There is no generic cursor/offset envelope. Bulk reads are expressed as SQL via
+    POST /v1/database/:name_or_identity/sql (LIMIT/OFFSET/WHERE in the SQL text).
+realtime:
+  style: websocket-subscription
+  endpoint: GET /v1/database/:name_or_identity/subscribe
+  detail: >-
+    The primary event/streaming surface is a WebSocket subscription (101 Switching Protocols).
+    Clients subscribe to SQL queries and receive the matching rows immediately, then incremental
+    transaction updates as rows change. See conformance/ for the subscription semantics reference.
+  message_encodings: [BSATN, JSON]
+content_types:
+  request: [application/json, application/sql, application/octet-stream]
+  response: [application/json, application/octet-stream]
+  detail: >-
+    Reducer arguments and SQL can be sent as JSON or BSATN (the Spacetime Algebraic Type Notation
+    binary format). BSATN is the wire format used by the SDKs and WebSocket protocol.
+sql:
+  endpoint: POST /v1/database/:name_or_identity/sql
+  detail: One-shot SQL query execution against a database, returning result rows.
+custom_http:
+  endpoint: ANY /v1/database/:name_or_identity/route/{*path}
+  detail: >-
+    Modules may expose arbitrary custom HTTP endpoints via "HTTP handlers"; requests to /route/*
+    are dispatched to the module's registered handlers.
+error_envelope:
+  format: http-status + plain body
+  detail: >-
+    Errors are signaled with HTTP status codes (400/401/404) rather than an RFC 9457
+    problem+json envelope. See errors/clockwork-labs-problem-types.yml.
+rate_limit_signaling:
+  documented: false
+  detail: No public rate-limit header contract is documented for the HTTP API.
+cross_links:
+  authentication: authentication/clockwork-labs-authentication.yml
+  errors: errors/clockwork-labs-problem-types.yml
+  lifecycle: lifecycle/clockwork-labs-lifecycle.yml
+  conformance: conformance/clockwork-labs-conformance.yml

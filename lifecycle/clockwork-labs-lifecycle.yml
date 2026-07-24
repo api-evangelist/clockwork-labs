@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://github.com/clockworklabs/SpacetimeDB/releases + https://status.spacetimedb.com +
+  https://spacetimedb.com/docs/http/
+versioning:
+  api_scheme: uri-path
+  api_current: v1
+  product_scheme: semver
+  product_current: v2.6.1
+  detail: >-
+    The HTTP API is versioned in the path (/v1/...). The SpacetimeDB engine/CLI/SDKs are versioned
+    with SemVer tags (current v2.6.1, released 2026-07-01); releases are cut roughly every 1-4 weeks.
+  releases_url: https://github.com/clockworklabs/SpacetimeDB/releases
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No formal HTTP deprecation policy or RFC 8594 Sunset/Deprecation header contract is documented.
+    Module schema evolution is handled by automatic + incremental migrations (docs/databases/*),
+    not by API deprecation headers.
+status_page: https://status.spacetimedb.com
+status_provider: BetterStack
+sla:
+  url: null
+  uptime_target: null
+  detail: No published SLA / uptime target was found.
+deprecated_operations: []

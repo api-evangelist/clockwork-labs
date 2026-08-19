@@ -2,11 +2,10 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: https://spacetimedb.com/docs/http/database/ + https://spacetimedb.com/docs/http/identity/
-note: >-
-  No first-party (Clockwork Labs) hosted or published MCP server was found as of this pass. Several
-  community MCP servers wrap SpacetimeDB (e.g. fractaloutlook/spacetimedb-mcp-server,
-  Fail2Fail-Studios/spacetimedb-mcp). The tool list below is a CANDIDATE derived from the documented
-  SpacetimeDB HTTP API operations, not an official manifest.
+note: No first-party (Clockwork Labs) hosted or published MCP server was found as of this pass. Several
+  community MCP servers wrap SpacetimeDB (e.g. fractaloutlook/spacetimedb-mcp-server, Fail2Fail-Studios/spacetimedb-mcp).
+  The tool list below is a CANDIDATE derived from the documented SpacetimeDB HTTP API operations, not
+  an official manifest.
 server:
   name: spacetimedb
   transport: http
@@ -41,3 +40,9 @@ tools:
 - name: verify_identity
   description: Verify an identity/token pair.
   source_operation: GET /v1/identity/:identity/verify
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

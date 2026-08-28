@@ -11,6 +11,17 @@ description: >-
   `spacetime` CLI and client SDKs for TypeScript, C#/Unity, Rust, Python, and C++. It is the
   production backend of BitCraft, the company's MMO. Clockwork Labs is backed by a16z, Supercell,
   Firstminute Capital, Skycatcher, 1Up Ventures, and Supernode.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve

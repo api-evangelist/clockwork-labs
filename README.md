@@ -64,19 +64,101 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Clockwork Labs is a San Francisco software company (founded 2019) that builds **SpacetimeDB**, a
-relational database that is also an application server: developers upload their schema and
-server-side logic as a WebAssembly module (Rust, C#, TypeScript, or C++) directly into the database,
-and clients connect over WebSocket to invoke reducers and subscribe to real-time state updates with
-no separate application server in between. It is the production backend of the MMO BitCraft.
+Clockwork Labs is a San Francisco software company (founded 2019) that builds SpacetimeDB, a relational database that is also an application server: developers upload their schema and server-side business logic as a WebAssembly "module" (written in Rust, C#, TypeScript, or C++) directly into the database, and clients connect over WebSocket to invoke reducers and subscribe to real-time state updates with no separate application server in between. SpacetimeDB exposes a versioned HTTP API (/v1/database and /v1/identity) for publishing modules, invoking reducers, running SQL, streaming subscriptions, and managing identities and JWT tokens, plus a first-party `spacetime` CLI and client SDKs for TypeScript, C#/Unity, Rust, Python, and C++. It is the production backend of BitCraft, the company's MMO. Clockwork Labs is backed by a16z, Supercell, Firstminute Capital, Skycatcher, 1Up Ventures, and Supernode.
 
-SpacetimeDB exposes a versioned HTTP API (`/v1/database` and `/v1/identity`), a first-party
-`spacetime` CLI, and client SDKs for TypeScript, C#/Unity, Rust, Python, and C++.
+**Areas:** Company · Database · Real-Time · WebSocket · Game Backend · Multiplayer · Serverless · WebAssembly · Developer Tools · Infrastructure
 
-- Website: https://spacetimedb.com
-- Docs: https://spacetimedb.com/docs
-- HTTP API reference: https://spacetimedb.com/docs/http/database/
-- GitHub: https://github.com/clockworklabs
-- Status: https://status.spacetimedb.com
+## Clockwork Labs on APIs.io
 
-Backed by: a16z (plus Supercell, Firstminute Capital, Skycatcher, 1Up Ventures, Supernode).
+Everything profiled for Clockwork Labs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/clockwork-labs/](https://apis.io/providers/clockwork-labs/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [SpacetimeDB HTTP API](https://apis.io/apis/clockwork-labs/spacetimedb-http-api/) — The SpacetimeDB HTTP API lets clients and tools interact with SpacetimeDB databases: publish and delete database modules, manage database names, retrieve…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [spacetimedb](https://apis.io/servers/clockwork-labs/spacetimedb/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Clockwork Labs Authentication](https://apis.io/security/clockwork-labs/clockwork-labs-authentication/)
+- [Clockwork Labs Domain Security](https://apis.io/security/clockwork-labs/clockwork-labs-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://spacetimedb.com/)
+- [Documentation](https://spacetimedb.com/docs)
+- [Getting started](https://spacetimedb.com/docs/)
+- [API reference](https://spacetimedb.com/docs/http/database/)
+- [Pricing](https://spacetimedb.com/pricing)
+- [Sign up](https://spacetimedb.com/login)
+- [Support](https://discord.gg/spacetimedb)
+- [Blog](https://spacetimedb.com/blog)
+- [Terms of service](https://spacetimedb.com/terms-of-service)
+- [Privacy policy](https://spacetimedb.com/privacy)
+- [GitHub](https://github.com/clockworklabs)
+- [Status](https://status.spacetimedb.com)
+
+## API Evangelist rating
+
+**Kin Score 37.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 44.7 |
+
+**Agent readiness 10.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/clockwork-labs/](https://apis.io/providers/clockwork-labs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Clockwork Labs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/clockwork-labs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
